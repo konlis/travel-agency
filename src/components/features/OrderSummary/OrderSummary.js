@@ -8,12 +8,12 @@ const OrderSummary = (props) => (
   console.log(props),
     
   <h2 className={styles.component}>
-    {calculateTotal(formatPrice(props.tripCost), props.options)}
+    {calculateTotal(formatPrice(props.cost), props.options)}
   </h2>
 );
 
 OrderSummary.propTypes = {
-  tripCost: PropTypes.string,
+  cost: PropTypes.string,
   options: PropTypes.object,
 };
 
