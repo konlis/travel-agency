@@ -1,4 +1,5 @@
 import React from 'react';
+//import styles from './OrderForm.scss';
 import PropTypes from 'prop-types';
 import OrderSummary from '../Ordersummary/OrderSummary.js';
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -8,8 +9,6 @@ import OrderOption from '../OrderOption/OrderOption.js';
 const OrderForm = (props) => (
   console.log('orderformProps', props),
   //console.log('tablepricing',pricing),
-
-  
   <Grid>
     <Row>
       {pricing.map(option => 

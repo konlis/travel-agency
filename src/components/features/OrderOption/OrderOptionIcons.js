@@ -11,7 +11,6 @@ const OrderOptionIcons = (props) => (
       <div 
         className={styles.icon} 
         key={value.id} 
-        value={value.id}
         onClick={() => props.setOptionValue(value.id)}>
         <Icon name={value.icon} />
         {value.name} ({formatPrice(value.price)})
