@@ -3,21 +3,22 @@ import { shallow } from 'enzyme';
 import TripSummary from './TripSummary';
 
 describe('Component TripSummary', () => {
-  it('should render correct title and image', () => {
-    const cost = 'Lorem ipsum';
-    const name = 'image.jpg';
-    const component = shallow(<TripSummary titleText={cost} imageSrc={name} />);
+  it('should generate correct adress /trip/abc', () => {
+    const id = 'abc';
+    const component = shallow(<TripSummary id={id}/>);
 
-    const renderedTitle = component.find('.title').text();
-    expect(renderedTitle).toEqual(expectedTitle);
-    expect(component.find('.image').prop('src')).toEqual(expectedImage);
+    expect(component.find('.link').prop('to').toEqual('/trip/${id}'));
   });
-  //   it('should throw error without required props', () => {
-  //     expect(() => shallow(<TripSummary />)).toThrow();
-  //   });
-  it('should throw error', () => {
-    const component = shallow(<TripSummary id image name cost days />);
-    expect(component).toThrow();
-    console.log(component.debug());
+
+  it('should <src> have correct src and alt', () => {
+    const exSrc = 'image';
+    const exAlt = 'imagetext';
+    const component = shallow(<TripSummary image={exSrc} name={exAlt} />);
+
+    expect(component.find('img').prop('src').toEqual('exSrc'));
+    expect(component.find('img').prop('alt').toEqual('exAlt'));
+  });
+  it('should render correct props name, cost, days', () => {
+    
   });
 });
