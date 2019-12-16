@@ -41,8 +41,8 @@ describe('Component TripSummary', () => {
   });
   it('div.tags it should not shown when tags.array is empty or undefined', () => {
     const component = shallow(<TripSummary tags={[]} />);
-    
-    expect(component.find('div.tags').isEmpty()).toEqual(true);
+
+    expect(component.exists('div.tags')).toEqual(false);
     console.log(component.debug());
   });
 });
