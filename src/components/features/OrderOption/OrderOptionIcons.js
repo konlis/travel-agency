@@ -6,10 +6,10 @@ import { formatPrice } from '../../../utils/formatPrice';
 
 const OrderOptionIcons = (props) => (
   <div 
-    className={styles.icon}>
+    >
     {props.values.map(value => (
       <div 
-        className={styles.icon, value.id === props.currentValue ? styles.iconActive : ''}
+        className={`${styles.icon} ${value.id === props.currentValue ? styles.iconActive : ''}`}
         key={value.id} 
         onClick={() => props.setOptionValue(value.id)}>
         <Icon name={value.icon} />
