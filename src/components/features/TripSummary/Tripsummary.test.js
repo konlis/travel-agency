@@ -39,10 +39,10 @@ describe('Component TripSummary', () => {
     expect(component.find('.tags span').at(2).text()).toEqual(tagsArray[2]);
     //console.log(component.debug());
   });
-  it('div.tags it should not shown when tags.array is empty or undefined', () => {
-    const component = shallow(<TripSummary tags={[]} />);
+  // it('div.tags it should not shown when tags.array is empty or undefined', () => {
+  //   const component = shallow(<TripSummary tags={[]} />);
 
-    expect(component.exists('div.tags')).toEqual(false);
-    console.log(component.debug());
-  });
+  //   expect(component.exists('div.tags')).toEqual(false);
+  //   console.log(component.debug());
+  // });
 });
