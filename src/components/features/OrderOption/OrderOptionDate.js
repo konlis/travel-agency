@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './OrderOption.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
@@ -16,6 +17,7 @@ class OrderOptionDate extends React.Component {
     render() {
       return (
         <DatePicker
+          className={styles.date}
           selected={this.state.startDate}
           onChange={this.handleChange}
         />

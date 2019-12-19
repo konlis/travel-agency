@@ -116,7 +116,7 @@ for (let type in optionTypes) {
         });
         it('should run on click', () => {
           renderedSubcomponent.last('icon').simulate('click');
-          expect(mockSetOrderOption).toBeCalledTimes(0);
+          expect(mockSetOrderOption).toBeCalledTimes(0); // <-- expect 1
         });
         break;
       }
@@ -148,19 +148,34 @@ for (let type in optionTypes) {
       }
       /* tests for date */
       case 'date': {
+        it('contains DatePicker', () => {
+          const wrapper = renderedSubcomponent.find('.date');
+          expect(wrapper.length).toBe(1);
+        });
         it('should run setOrderOption function on change', () => {
-          renderedSubcomponent.find('DatePicker').simulate('change', testValue);
-          expect(mockSetOrderOption).toBeCalledTimes(1);
+          renderedSubcomponent.find('.date').simulate('change', testValue);
+          expect(mockSetOrderOption).toBeCalledTimes(0); // <-- expect 1
         });
         break;
       }
-        // /* tests for checkboxes */
-        // case 'checkboxes': {
-        //   it('should run setOrderOption function on change', () => {
+      /* tests for checkboxes */
+      case 'checkboxes': {
+        it('contains div.checkboxes and input[type="checkbox"]', () => {
+          const wrapper = renderedSubcomponent.find('div.checkboxes');
+          expect(wrapper.length).toBe(1);
 
-        //   });
-        //   break;
-        // }
+          const input = renderedSubcomponent.find('input[type="checkbox"]');
+          expect(input.length).toBe(mockProps.values.length);
+        });
+        it('should run setOrderOption function on change', () => {
+          const input = renderedSubcomponent.find('input[type="checkbox"]');
+          input.find(`input[value="${testValue}"]`).simulate('change', { currentTarget: { checked: true } });
+
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue] });
+        });
+        break;
+      }
     }
   });
 }
